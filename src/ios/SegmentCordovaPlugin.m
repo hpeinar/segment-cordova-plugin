@@ -1,6 +1,5 @@
 #import "SegmentCordovaPlugin.h"
-#import "SEGAppboyIntegrationFactory.h"
-#import "Appboy.h"
+#import "SEGFirebaseIntegrationFactory.h"
 
 @implementation SegmentCordovaPlugin
 
@@ -63,8 +62,8 @@
                 if ([configOptions objectForKey:@"defaultOptions"] != nil) {
                     configuration.launchOptions = [configOptions objectForKey:@"defaultOptions"];
                 }
-                if ([configOptions objectForKey:@"enableBrazeIntegration"] != nil && [[configOptions objectForKey:@"enableBrazeIntegration"] boolValue] == true) {
-                    [configuration use:[SEGAppboyIntegrationFactory instance]];
+                if ([configOptions objectForKey:@"enableFirebaseIntegration"] != nil && [[configOptions objectForKey:@"enableFirebaseIntegration"] boolValue] == true) {
+                    [configuration use:[SEGFirebaseIntegrationFactory instance]];
                 }
             }
         }

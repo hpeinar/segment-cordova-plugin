@@ -1,7 +1,7 @@
 # segment-cordova-plugin
 > Cordova plugin for [Segment mobile SDK](https://segment.com/docs/sources/#mobile)
 
-This version of the plugin uses versions `3.7.1` (iOS) and `4.3.1` (Android) of the Segment mobile SDK.
+This version of the plugin uses versions `4.1.1` (iOS) and `4.9.0` (Android) of the Segment mobile SDK.
 You can view Android and iOS SDK sources on Github.
 
 * https://github.com/segmentio/analytics-android
@@ -14,8 +14,12 @@ Prerequisites:
 
 You can install the latest version of the plugin directly from git through the Cordova CLI:
 ```bash
-cordova plugin add https://github.com/kohofinancial/segment-cordova-plugin.git
+cordova plugin add https://github.com/seanmiddaugh/segment-cordova-plugin.git
 ```
+
+If you'd like to use the Firebase Integration, ensure you install the Firebase SDK. This is a requirement for device mode specific destinations.
+
+`cordova plugin add cordova-plugin-firebasex`
 
 ## Usage
 In your 'deviceready' handler, start Segment Analytics :
@@ -60,7 +64,7 @@ Record certain application lifecycle events like `Application Opened`, `Applicat
 #### recordScreenViews (Android and iOS)
 Record screen views automatically. It's not useful for the Cordova PhoneGap app. (Default: false)
 
-#### defaultOptions (Android and iOS)
+#### launchOptions (Android and iOS)
 Specify which integrations should be enabled or not for all calls. (Default: All)
 
 #### trackAttributionInformation (Android and iOS)
@@ -69,8 +73,8 @@ Record attribution data from enabled providers using the mobile service. (Defaul
 #### flushQueueSize (Android and iOS)
 The queue size at which to flush events. (Default: 20, Max: 250 for Android and 100 for iOS) 
 
-#### enableBrazeIntegration (Android and iOS)
-Enable device-mode connection to the Braze destination 
+#### enableFirebaseIntegration (Android and iOS)
+Enable device-mode connection to the Firebase destination 
 
 #### collectDeviceId (Android)
 Record the device id. (Default: true)
@@ -106,7 +110,7 @@ window.Segment.startWithConfiguration(IOS_OR_ANDROID_KEY, {
     trackAttributionInformation: true,
     flushInterval: 60,
     trackInAppPurchases: true,
-    enableBrazeIntegration: true
+    enableFirebaseIntegration: true
 });
 ```      
 

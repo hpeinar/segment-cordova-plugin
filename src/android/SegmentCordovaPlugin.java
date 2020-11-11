@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.segment.analytics.android.integrations.appboy.AppboyIntegration;
+import com.segment.analytics.android.integrations.firebase.FirebaseIntegration;
 
 public class SegmentCordovaPlugin extends CordovaPlugin {
 
@@ -132,8 +132,8 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
                         options = toOptions(obj.optJSONObject("launchOptions"));
                         builder.defaultOptions(options);
                     }
-                    if (obj.has("enableBrazeIntegration") && obj.optBoolean("enableBrazeIntegration") == true) {
-                        builder.use(AppboyIntegration.FACTORY);
+                    if (obj.has("enableFirebaseIntegration") && obj.optBoolean("enableFirebaseIntegration") == true) {
+                        builder.use(FirebaseIntegration.FACTORY);
                     }
                     // middleware, connectionFactory, optOut are not currently supported.
                 }
