@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <Cordova/CDV.h>
-#import <Analytics/SEGAnalytics.h>
+#import <Segment/SEGAnalytics.h>
 
 @interface SegmentCordovaPlugin : CDVPlugin {
   // Member variables go here.
