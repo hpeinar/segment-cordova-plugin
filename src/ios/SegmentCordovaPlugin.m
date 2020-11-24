@@ -56,9 +56,6 @@
                 if ([configOptions objectForKey:@"trackPushNotifications"] != nil) {
                     configuration.trackPushNotifications = [[configOptions objectForKey:@"trackPushNotifications"] boolValue];
                 }
-                if ([configOptions objectForKey:@"trackAttributionInformation"] != nil) {
-                    configuration.trackAttributionData = [[configOptions objectForKey:@"trackAttributionInformation"] boolValue];
-                }
                 if ([configOptions objectForKey:@"defaultOptions"] != nil) {
                     configuration.launchOptions = [configOptions objectForKey:@"defaultOptions"];
                 }
