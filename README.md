@@ -67,9 +67,6 @@ Record screen views automatically. It's not useful for the Cordova PhoneGap app.
 #### launchOptions (Android and iOS)
 Specify which integrations should be enabled or not for all calls. (Default: All)
 
-#### trackAttributionInformation (Android and iOS)
-Record attribution data from enabled providers using the mobile service. (Default: false)
-
 #### flushQueueSize (Android and iOS)
 The queue size at which to flush events. (Default: 20, Max: 250 for Android and 100 for iOS) 
 
@@ -107,7 +104,6 @@ Record push notifications.  (Default: false)
 ```javascript
 window.Segment.startWithConfiguration(IOS_OR_ANDROID_KEY, {
     trackApplicationLifecycleEvents: true,
-    trackAttributionInformation: true,
     flushInterval: 60,
     trackInAppPurchases: true,
     enableFirebaseIntegration: true
