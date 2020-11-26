@@ -516,11 +516,19 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
         // to construct Properties.Product object
         JSONArray productList;
         JSONObject prod;
-        String prodId;
-        String prodName;
-        String prodCategory;
-        String prodVariant;
-        double prodPrice;
+        
+        String productId;
+        String productSku;
+        String productCategory;
+        String productName;
+        String productBrand;
+        String productVariant;
+        double productPrice;
+        int productQuantity;
+        String productCoupon;
+        int productPosition;
+        String productUrl;
+        String productImageUrl;
 
         // to construct custom properties
         Iterator<?> propertyList;
@@ -619,25 +627,51 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
                     for (int i = 0; i < productList.length(); i++) {
                         prod = productList.getJSONObject(i);
 
-                        prodId = prod.optString("id", null);
-                        prodPrice = prod.optDouble("price", 0);
+                        productId = prod.optString("product_id", null);
+                        productPrice = prod.optDouble("price", 0);
 
                         product = new Properties.Product(prodId, null, prodPrice);
 
-                        prodName = prod.optString("name", null);
-                        if (prodName != null) {
-                            product.putName(prodName);
+                        productName = prod.optString("name", null);
+                        if (productName != null) {
+                            product.putValue("name", productName);
                         }
-                        // category, variant, and position are used for Google Analytics product
-                        prodCategory = prod.optString("category", null);
-                        if (prodCategory != null) {
-                            product.putValue("category", prodCategory);
+                        productSku = prod.optString("sku", null);
+                        if (productSku != null) {
+                            product.putValue("sku", productSku);
                         }
-                        prodVariant = prod.optString("variant", null);
-                        if (prodVariant != null) {
-                            product.putValue("variant", prodVariant);
+                        productCategory = prod.optString("category", null);
+                        if (productCategory != null) {
+                            product.putValue("category", productCategory);
                         }
-                        product.putValue("position", prod.optInt("position", 1));
+                        productBrand = prod.optString("brand", null);
+                        if (productBrand != null) {
+                            product.putValue("brand", productBrand);
+                        }
+                        productVariant = prod.optString("variant", null);
+                        if (productVariant != null) {
+                            product.putValue("variant", productVariant);
+                        }
+                        productQuantity = prod.optInt("quantity", Integer.MIN_VALUE);
+                        if (productQuantity != Integer.MIN_VALUE) {
+                            product.putValue("quantity", productQuantity);
+                        }
+                        productCoupon = prod.optString("coupon", null);
+                        if (productCoupon != null) {
+                            product.putValue("coupon", productCoupon);
+                        }
+                        productPosition = prod.optInt("position", Integer.MIN_VALUE);
+                        if (productPosition != Integer.MIN_VALUE) {
+                            product.putValue("position", productPosition);
+                        }
+                        productUrl = prod.optString("url", null);
+                        if (productUrl != null) {
+                            product.putValue("url", productUrl);
+                        }
+                        productImageUrl = prod.optString("image_url", null);
+                        if (productImageUrl != null) {
+                            product.putValue("image_url", productImageUrl);
+                        }
 
                         products.add(product);
                     }
