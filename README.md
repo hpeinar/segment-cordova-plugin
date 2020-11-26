@@ -45,9 +45,9 @@ window.Segment.track({
     }
 });
 ```
-To track an Identity:
+To track an Identify:
 ```javascript
-window.Segment.identity({
+window.Segment.identify({
     userId: 'segment_sdk_user',
     traits: {
         birthday: '2000-01-01'
