@@ -630,7 +630,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
                         productId = prod.optString("product_id", null);
                         productPrice = prod.optDouble("price", 0);
 
-                        product = new Properties.Product(prodId, null, prodPrice);
+                        product = new Properties.Product(productId, null, productPrice);
 
                         productName = prod.optString("name", null);
                         if (productName != null) {
