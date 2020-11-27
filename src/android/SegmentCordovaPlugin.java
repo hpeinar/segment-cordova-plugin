@@ -518,6 +518,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
         JSONObject prod;
         
         String productId;
+        String productProductId;
         String productSku;
         String productCategory;
         String productName;
@@ -632,6 +633,10 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
 
                         product = new Properties.Product(productId, null, productPrice);
 
+                        productProductId = prod.optString("product_id", null);
+                        if (productProductId != null) {
+                            product.putValue("product_id", productProductId);
+                        }
                         productName = prod.optString("name", null);
                         if (productName != null) {
                             product.putValue("name", productName);
