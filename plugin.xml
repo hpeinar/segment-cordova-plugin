@@ -29,7 +29,6 @@
         <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
 
         <framework src="com.segment.analytics.android:analytics:4.9.0"/>
-        <framework src="com.segment.analytics.android.integrations:firebase:2.1.1@aar"/>
     </platform>
 
     <platform name="ios">
@@ -48,7 +47,6 @@
             </config>
             <pods>
                 <pod name="Analytics" spec="4.1.1"/>
-                <pod name="Segment-Firebase" spec="2.7.0"/>
             </pods>
         </podspec>
     </platform>

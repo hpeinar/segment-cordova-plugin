@@ -14,7 +14,7 @@ Prerequisites:
 
 You can install the latest version of the plugin directly from git through the Cordova CLI:
 ```bash
-cordova plugin add https://github.com/seanmiddaugh/segment-cordova-plugin.git
+cordova plugin add https://github.com/hpeinar/segment-cordova-plugin.git
 ```
 
 If you'd like to use the Firebase Integration, ensure you install the Firebase SDK. This is a requirement for device mode specific destinations.
@@ -105,8 +105,7 @@ Record push notifications.  (Default: false)
 window.Segment.startWithConfiguration(IOS_OR_ANDROID_KEY, {
     trackApplicationLifecycleEvents: true,
     flushInterval: 60,
-    trackInAppPurchases: true,
-    enableFirebaseIntegration: true
+    trackInAppPurchases: true
 });
 ```      
 
