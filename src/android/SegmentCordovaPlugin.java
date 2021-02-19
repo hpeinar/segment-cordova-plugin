@@ -511,23 +511,14 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
         // to construct Properties.Product object
         JSONArray productList;
         JSONObject prod;
-        
+
         String productId;
-        String productProductId;
         String productSku;
-        String productCategory;
-        String productName;
-        String productBrand;
-        String productVariant;
         double productPrice;
-        int productQuantity;
-        String productCoupon;
-        int productPosition;
-        String productUrl;
-        String productImageUrl;
 
         // to construct custom properties
         Iterator<?> propertyList;
+        Iterator<?> productPropertyList;
         String key;
         Object obj;
 
@@ -624,59 +615,38 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
                         prod = productList.getJSONObject(i);
 
                         productId = prod.optString("product_id", null);
+                        productSku = prod.optString("sku", null);
                         productPrice = prod.optDouble("price", 0);
 
-                        product = new Properties.Product(productId, null, productPrice);
+                        product = new Properties.Product(productId, productSku, productPrice);
 
-                        productProductId = prod.optString("product_id", null);
-                        if (productProductId != null) {
-                            product.putValue("product_id", productProductId);
-                        }
-                        productName = prod.optString("name", null);
-                        if (productName != null) {
-                            product.putValue("name", productName);
-                        }
-                        productSku = prod.optString("sku", null);
-                        if (productSku != null) {
-                            product.putValue("sku", productSku);
-                        }
-                        productCategory = prod.optString("category", null);
-                        if (productCategory != null) {
-                            product.putValue("category", productCategory);
-                        }
-                        productBrand = prod.optString("brand", null);
-                        if (productBrand != null) {
-                            product.putValue("brand", productBrand);
-                        }
-                        productVariant = prod.optString("variant", null);
-                        if (productVariant != null) {
-                            product.putValue("variant", productVariant);
-                        }
-                        productQuantity = prod.optInt("quantity", Integer.MIN_VALUE);
-                        if (productQuantity != Integer.MIN_VALUE) {
-                            product.putValue("quantity", productQuantity);
-                        }
-                        productCoupon = prod.optString("coupon", null);
-                        if (productCoupon != null) {
-                            product.putValue("coupon", productCoupon);
-                        }
-                        productPosition = prod.optInt("position", Integer.MIN_VALUE);
-                        if (productPosition != Integer.MIN_VALUE) {
-                            product.putValue("position", productPosition);
-                        }
-                        productUrl = prod.optString("url", null);
-                        if (productUrl != null) {
-                            product.putValue("url", productUrl);
-                        }
-                        productImageUrl = prod.optString("image_url", null);
-                        if (productImageUrl != null) {
-                            product.putValue("image_url", productImageUrl);
-                        }
+                        productPropertyList = prod.keys();
 
-                        products.add(product);
+                        // Iterate properties to find non-predefined properties
+                        while (productPropertyList.hasNext()) {
+                            key = (String) productPropertyList.next();
+
+                            if (!product.containsKey(key)) {
+                                obj = prod.get(key);
+
+                                if (obj instanceof Integer) {
+                                  product.putValue(key, prod.optInt(key));
+                                } else if (obj instanceof Long) {
+                                  product.putValue(key, prod.optLong(key));
+                                } else if (obj instanceof Double) {
+                                  product.putValue(key, prod.optDouble(key));
+                                } else if (obj instanceof String) {
+                                  product.putValue(key, prod.optString(key));
+                                } else if (obj instanceof Boolean) {
+                                  product.putValue(key, prod.optBoolean(key));
+                                }
+                            }
+                      }
+
+                      products.add(product);
                     }
 
-                    properties.putProducts(products.toArray(new Properties.Product[products.size()]));
+                  properties.putProducts(products.toArray(new Properties.Product[products.size()]));
                 }
 
                 propertyList = propertiesObj.keys();
