@@ -24,6 +24,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import com.webengage.sdk.android.integrations.segment.WebEngageIntegration;
+
 public class SegmentCordovaPlugin extends CordovaPlugin {
 
     private static final String ACTION_WITH_CONFIGURATION = "startWithConfiguration";
@@ -79,7 +81,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
 
         try {
             if (null != id && id.length() > 0) {
-                builder = new Analytics.Builder(cordova.getActivity().getApplicationContext(), id);
+                builder = new Analytics.Builder(cordova.getActivity().getApplicationContext(), id).use(WebEngageIntegration.FACTORY);
 
                 if (obj != null) {
                     if (obj.has("trackApplicationLifecycleEvents")) {

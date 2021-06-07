@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <Cordova/CDV.h>
 #import <Segment/SEGAnalytics.h>
+#import <Segment-WebEngage/WEGSegmentIntegrationFactory.h>
 
 @interface SegmentCordovaPlugin : CDVPlugin {
   // Member variables go here.

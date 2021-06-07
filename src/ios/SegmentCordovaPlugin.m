@@ -19,6 +19,9 @@
     if (key != nil && [key length] > 0) {
         configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:key];
 
+        //Register WebEngage Integration With Segment
+        [configuration use:[WEGSegmentIntegrationFactory instanceWithApplication:application launchOptions:launchOptions]];
+
         if ([command.arguments count] > 1) {
             configOptions = [command.arguments objectAtIndex:1];
 

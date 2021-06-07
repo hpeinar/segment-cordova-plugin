@@ -2,7 +2,7 @@
 <plugin id="segment-cordova-plugin"
 	xmlns="http://apache.org/cordova/ns/plugins/1.0"
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	version="4.0.0" >
+	version="4.0.1" >
 
     <name>SegmentCordovaPlugin</name>
     <license>MIT License</license>
@@ -47,6 +47,7 @@
             </config>
             <pods>
                 <pod name="Analytics" spec="4.1.1"/>
+                <pod name="Segment-WebEngage" spec="1.2.0"/>
             </pods>
         </podspec>
     </platform>

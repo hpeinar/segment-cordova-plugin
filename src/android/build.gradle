@@ -1,0 +1,16 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral();
+        jcenter();
+    }
+}
+dependencies {
+    compile 'com.webengage:android-segment:2.+'
+}
