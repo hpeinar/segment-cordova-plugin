@@ -20,7 +20,7 @@
         configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:key];
 
         //Register WebEngage Integration With Segment
-        [configuration use:[WEGSegmentIntegrationFactory instanceWithApplication:application launchOptions:launchOptions]];
+        [configuration use:[WEGSegmentIntegrationFactory instanceWithApplication:configuration.application launchOptions:configuration.launchOptions]];
 
         if ([command.arguments count] > 1) {
             configOptions = [command.arguments objectAtIndex:1];
